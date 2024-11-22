@@ -14,6 +14,7 @@
         <module>iframework-parent</module>
         <module>iframework-common</module>
         <module>iframework-infrastructure</module>
+        <module>iframework-outbox</module>
         <module>iframework-autoconfigure</module>
         <module>iframework-starter</module>
     </modules>

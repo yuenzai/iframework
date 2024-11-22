@@ -10,20 +10,17 @@
         <relativePath>../iframework-parent</relativePath>
     </parent>
 
-    <artifactId>iframework-spring-boot-starter</artifactId>
+    <artifactId>iframework-outbox</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>cn.ecosync.iframework</groupId>
+            <artifactId>iframework-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.ecosync.iframework</groupId>
-            <artifactId>iframework-infrastructure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.ecosync.iframework</groupId>
-            <artifactId>iframework-autoconfigure</artifactId>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

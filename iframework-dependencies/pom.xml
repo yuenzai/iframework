@@ -15,6 +15,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <!-- 升级 Kafka Streams 版本，因为 RocksDB 不支持 Apple Silicon 芯片 -->
+        <kafka.version>3.2.3</kafka.version>
+        <spring-kafka.version>2.9.13</spring-kafka.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <swagger-api.version>2.2.20</swagger-api.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -29,6 +37,11 @@
             </dependency>
             <dependency>
                 <groupId>cn.ecosync.iframework</groupId>
+                <artifactId>iframework-outbox</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.ecosync.iframework</groupId>
                 <artifactId>iframework-autoconfigure</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -36,6 +49,16 @@
                 <groupId>cn.ecosync.iframework</groupId>
                 <artifactId>iframework-spring-boot-starter</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
