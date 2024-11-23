@@ -1,10 +1,10 @@
-package cn.ecosync.iframework.bus;
+package cn.ecosync.iframework.outbox.bus;
 
 import cn.ecosync.iframework.event.AbstractEventBus;
 import cn.ecosync.iframework.event.AggregateRemovedEvent;
 import cn.ecosync.iframework.event.Event;
-import cn.ecosync.iframework.outbox.Outbox;
-import cn.ecosync.iframework.jpa.repository.OutboxJpaRepository;
+import cn.ecosync.iframework.outbox.domain.Outbox;
+import cn.ecosync.iframework.outbox.repository.OutboxJpaRepository;
 import cn.ecosync.iframework.serde.JsonSerde;
 import org.springframework.util.Assert;
 

@@ -3,11 +3,11 @@ package cn.ecosync.iframework.autoconfigure;
 import cn.ecosync.iframework.bus.DefaultCommandBus;
 import cn.ecosync.iframework.bus.DefaultEventBus;
 import cn.ecosync.iframework.bus.DefaultQueryBus;
-import cn.ecosync.iframework.bus.OutboxEventBus;
 import cn.ecosync.iframework.command.CommandBus;
 import cn.ecosync.iframework.command.CommandHandler;
 import cn.ecosync.iframework.event.EventBus;
-import cn.ecosync.iframework.jpa.repository.OutboxJpaRepository;
+import cn.ecosync.iframework.outbox.bus.OutboxEventBus;
+import cn.ecosync.iframework.outbox.repository.OutboxJpaRepository;
 import cn.ecosync.iframework.query.QueryBus;
 import cn.ecosync.iframework.query.QueryHandler;
 import cn.ecosync.iframework.serde.JacksonSerde;
@@ -78,8 +78,8 @@ public class IFrameworkAutoConfiguration {
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass({JpaRepository.class, OutboxJpaRepository.class})
     @ConditionalOnProperty(prefix = "spring.data.jpa.repositories", name = "enabled", havingValue = "true", matchIfMissing = true)
-    @EntityScan("cn.ecosync.iframework.outbox")
-    @EnableJpaRepositories("cn.ecosync.iframework.jpa.repository")
+    @EntityScan("cn.ecosync.iframework.outbox.domain")
+    @EnableJpaRepositories("cn.ecosync.iframework.outbox.repository")
     public static class OutboxConfiguration {
         @Bean
         public OutboxEventBus outboxEventBus(OutboxJpaRepository outboxJpaRepository, JsonSerde jsonSerde) {

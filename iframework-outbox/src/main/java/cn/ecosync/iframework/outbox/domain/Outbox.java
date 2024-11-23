@@ -1,4 +1,4 @@
-package cn.ecosync.iframework.outbox;
+package cn.ecosync.iframework.outbox.domain;
 
 import cn.ecosync.iframework.domain.IdentifiedValueObject;
 

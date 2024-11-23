@@ -1,7 +1,7 @@
-package cn.ecosync.iframework.jpa.repository;
+package cn.ecosync.iframework.outbox.repository;
 
 import cn.ecosync.iframework.event.EventAcknowledgment;
-import cn.ecosync.iframework.outbox.OutboxProcessed;
+import cn.ecosync.iframework.outbox.domain.OutboxProcessed;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.Assert;
 
