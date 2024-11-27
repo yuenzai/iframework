@@ -1,6 +1,6 @@
 package cn.ecosync.iframework.domain;
 
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.MappedSuperclass;
 
 /**
  * @author yuenzai

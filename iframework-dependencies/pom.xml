@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.4.0</version>
         <relativePath/>
     </parent>
 
@@ -16,11 +16,9 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!-- 升级 Kafka Streams 版本，因为 RocksDB 不支持 Apple Silicon 芯片 -->
-        <kafka.version>3.2.3</kafka.version>
-        <spring-kafka.version>2.9.13</spring-kafka.version>
-        <springdoc.version>1.8.0</springdoc.version>
-        <swagger-api.version>2.2.20</swagger-api.version>
+        <springdoc.version>2.7.0</springdoc.version>
+        <swagger-api.version>2.2.25</swagger-api.version>
+        <debezium.version>2.7.3.Final</debezium.version>
     </properties>
 
     <dependencyManagement>
@@ -52,13 +50,24 @@
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-ui</artifactId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-api.version}</version>
+            </dependency>
+            <!-- debezium -->
+            <dependency>
+                <groupId>io.debezium</groupId>
+                <artifactId>debezium-embedded</artifactId>
+                <version>${debezium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.debezium</groupId>
+                <artifactId>debezium-connector-mysql</artifactId>
+                <version>${debezium.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

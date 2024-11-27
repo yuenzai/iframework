@@ -13,7 +13,7 @@
     <artifactId>iframework-parent</artifactId>
     <packaging>pom</packaging>
 
-    <build>
+    <!--<build>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -41,5 +41,5 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-    </build>
+    </build>-->
 </project>

@@ -34,6 +34,15 @@ public class CollectionUtils extends org.springframework.util.CollectionUtils {
         return !isEmpty(map);
     }
 
+    public static <T> Optional<T> firstElement(Iterable<T> iterable) {
+        Iterator<T> it = iterable.iterator();
+        T first = null;
+        if (it.hasNext()) {
+            first = it.next();
+        }
+        return Optional.ofNullable(first);
+    }
+
     public static Object oneOrMore(List<?> list) {
         if (isEmpty(list)) {
             return null;

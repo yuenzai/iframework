@@ -1,6 +1,7 @@
 package cn.ecosync.iframework.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 /**
