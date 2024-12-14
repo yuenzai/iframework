@@ -1,14 +1,11 @@
 package cn.ecosync.iframework.outbox.bus;
 
 import cn.ecosync.iframework.event.AbstractEventBus;
-import cn.ecosync.iframework.event.AggregateRemovedEvent;
 import cn.ecosync.iframework.event.Event;
 import cn.ecosync.iframework.outbox.domain.Outbox;
 import cn.ecosync.iframework.outbox.repository.OutboxJpaRepository;
 import cn.ecosync.iframework.serde.JsonSerde;
 import org.springframework.util.Assert;
-
-import java.util.Optional;
 
 /**
  * @author yuenzai
@@ -31,16 +28,12 @@ public class OutboxEventBus extends AbstractEventBus {
     }
 
     private Outbox toOutbox(Event event) {
-        String payload = Optional.of(event)
-                .filter(in -> !(in instanceof AggregateRemovedEvent))
-                .map(jsonSerde::serialize)
-                .orElse(null);
+        String payload = jsonSerde.serialize(event);
         return new Outbox(
-                event.aggregateType(),
-                event.aggregateId(),
                 event.eventId(),
+                event.eventDestination(),
+                event.eventKey(),
                 event.eventTime(),
-                event.eventType(),
                 payload
         );
     }

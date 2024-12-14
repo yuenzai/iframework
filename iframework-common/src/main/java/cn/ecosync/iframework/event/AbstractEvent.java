@@ -1,5 +1,7 @@
 package cn.ecosync.iframework.event;
 
+import org.springframework.util.Assert;
+
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,9 +11,28 @@ import java.util.UUID;
  * @since 2024
  */
 public abstract class AbstractEvent implements Event {
-    private final String eventId = UUID.randomUUID().toString().replace("-", "");
+    private String eventDestination;
+    private String eventId;
+    private Instant eventTime;
 
-    private final Instant eventTime = Instant.now();
+    protected AbstractEvent() {
+    }
+
+    public AbstractEvent(String eventDestination) {
+        this(eventDestination, null, null);
+    }
+
+    public AbstractEvent(String eventDestination, String eventId, Instant eventTime) {
+        Assert.hasText(eventDestination, "eventDestination must not be empty");
+        this.eventDestination = eventDestination;
+        this.eventId = eventId != null ? eventId : UUID.randomUUID().toString().replace("-", "");
+        this.eventTime = eventTime != null ? eventTime : Instant.now();
+    }
+
+    @Override
+    public String eventDestination() {
+        return eventDestination;
+    }
 
     @Override
     public String eventId() {

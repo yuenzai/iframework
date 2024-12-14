@@ -7,13 +7,11 @@ import java.time.Instant;
  * @since 2024
  */
 public interface Event {
-    String aggregateType();
-
-    String aggregateId();
-
     String eventId();
 
-    Instant eventTime();
+    String eventDestination();
 
-    String eventType();
+    String eventKey();
+
+    Instant eventTime();
 }
