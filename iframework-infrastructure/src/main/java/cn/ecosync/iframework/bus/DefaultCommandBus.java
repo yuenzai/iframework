@@ -42,7 +42,7 @@ public class DefaultCommandBus implements CommandBus {
         Assert.notNull(command, "command is null");
         CommandHandler<?> commandHandler = getCommandHandler(command);
         Assert.notNull(commandHandler, "command handler not found: " + command.getClass().getCanonicalName());
-        Method handleMethod = ReflectionUtils.findMethod(commandHandler.getClass(), "handle"/*, command.getClass()*/);
+        Method handleMethod = ReflectionUtils.findMethod(commandHandler.getClass(), "handle", (Class<?>[]) null);
         Assert.notNull(handleMethod, "handle method not found: " + commandHandler.getClass().getCanonicalName());
         command.validate();
         ReflectionUtils.invokeMethod(handleMethod, commandHandler, command);

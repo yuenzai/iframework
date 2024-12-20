@@ -100,12 +100,13 @@ public class DebeziumEngineConfigurationProperties {
         // transforms properties
         props.setProperty("transforms", "outbox");
         props.setProperty("transforms.outbox.type", "io.debezium.transforms.outbox.EventRouter");
-        props.setProperty("transforms.outbox.route.by.field", "aggregate_type");
         props.setProperty("transforms.outbox.route.topic.replacement", String.format("%s-${routedByValue}", schemaName));
-        props.setProperty("transforms.outbox.table.fields.additional.placement", "event_type:header:eventType,event_time:header:eventTime");
+        props.setProperty("transforms.outbox.route.by.field", "event_destination");
         props.setProperty("transforms.outbox.table.field.event.id", "event_id");
-        props.setProperty("transforms.outbox.table.field.event.key", "aggregate_id");
-        props.setProperty("transforms.outbox.table.field.event.payload", "payload");
+        props.setProperty("transforms.outbox.table.field.event.key", "event_key");
+        props.setProperty("transforms.outbox.table.field.event.timestamp", "event_time");
+        props.setProperty("transforms.outbox.table.field.event.payload", "event_payload");
+        props.setProperty("transforms.outbox.table.expand.json.payload", "true");
         props.setProperty("transforms.outbox.predicate", "isOutboxEvent");
         // Database schema history properties
         props.setProperty("schema.history.internal", "io.debezium.storage.kafka.history.KafkaSchemaHistory");

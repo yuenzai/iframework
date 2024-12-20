@@ -14,7 +14,7 @@ import java.time.Instant;
  * @since 2024
  */
 @Entity
-@Table(name = "OUTBOX_EVENT")
+@Table(name = "outbox_event")
 public class OutboxEvent extends IdentifiedValueObject implements Event {
     @Column(name = "event_id", nullable = false, updatable = false)
     private String eventId;

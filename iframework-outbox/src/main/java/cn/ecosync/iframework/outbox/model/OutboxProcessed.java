@@ -10,7 +10,7 @@
 // * @since 2024
 // */
 //@Entity
-//@Table(name = "OUTBOX_PROCESSED")
+//@Table(name = "outbox_processed")
 //public class OutboxProcessed extends IdentifiedValueObject {
 //    /**
 //     * 事件唯一标识

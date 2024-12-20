@@ -12,6 +12,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface OutboxEventJpaRepository extends JpaRepository<OutboxEvent, Integer>, EventRepository {
     @Override
     default void add(Event event) {
-        save((OutboxEvent) event);
+        OutboxEvent outboxEvent;
+        if (event instanceof OutboxEvent) {
+            outboxEvent = (OutboxEvent) event;
+        } else {
+            outboxEvent = new OutboxEvent(event);
+        }
+        save(outboxEvent);
     }
 }
