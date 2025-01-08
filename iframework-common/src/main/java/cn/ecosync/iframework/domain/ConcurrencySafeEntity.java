@@ -13,5 +13,5 @@ public abstract class ConcurrencySafeEntity extends Entity {
      * 乐观锁版本
      */
     @Version
-    private Integer version;
+    protected Integer version;
 }

@@ -10,13 +10,11 @@ import cn.ecosync.iframework.event.EventBus;
 import cn.ecosync.iframework.event.repository.EventRepository;
 import cn.ecosync.iframework.query.QueryBus;
 import cn.ecosync.iframework.query.QueryHandler;
-import cn.ecosync.iframework.serde.JsonSerde;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.kafka.core.KafkaTemplate;
 
 import java.util.List;
 
@@ -45,10 +43,7 @@ public class IFrameworkAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(EventBus.class)
-    public DefaultEventBus defaultEventBus(
-            ObjectProvider<EventRepository> eventRepositoryProvider,
-            ObjectProvider<KafkaTemplate<String, String>> kafkaTemplateProvider,
-            JsonSerde jsonSerde) {
-        return new DefaultEventBus(eventRepositoryProvider.getIfAvailable(), kafkaTemplateProvider.getIfAvailable(), jsonSerde);
+    public DefaultEventBus defaultEventBus(ObjectProvider<EventRepository> eventRepositoryProvider) {
+        return new DefaultEventBus(eventRepositoryProvider.getIfAvailable());
     }
 }
