@@ -8,6 +8,14 @@ public abstract class PageQuery {
     private Integer page;
     private Integer pagesize;
 
+    protected PageQuery() {
+    }
+
+    public PageQuery(Integer page, Integer pagesize) {
+        this.page = page;
+        this.pagesize = pagesize;
+    }
+
     public Sort toSort() {
         return Sort.unsorted();
     }
